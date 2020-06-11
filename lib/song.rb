@@ -1,3 +1,4 @@
+require 'pry'
 class Song
 
   attr_reader :name, :artist, :genre
@@ -20,6 +21,7 @@ class Song
   end
 
   def self.artists
+    # binding.pry
     @@artists.uniq
   end
 
@@ -28,22 +30,19 @@ class Song
   end
 
   def self.genre_count
-    # @@genres
-    # self.genres
     genre_hash = {}
-
     self.genres.each do |genre|
-      genre_hash[genre] = @@genres.count {|g| g == genre}
+      genre_hash[genre] = @@genres.count {|gen| gen == genre}
     end
     genre_hash
   end
 
   def self.artist_count
     artist_hash = {}
-
     self.artists.each do |artist|
       artist_hash[artist] = @@artists.count {|a| a == artist}
     end
     artist_hash
   end
+
 end
